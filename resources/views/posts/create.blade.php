@@ -48,7 +48,7 @@
 
         <div>
             <label for="grades">Grades:</label>
-            <select id="language" name="language" required>
+            <select id="grades" name="grades" required>
                 <option value="">Select grade range</option>
                 <option value="1-12">1-12</option>
                 <option value="1-3">1-3</option>
@@ -74,11 +74,6 @@
                 <option value="LV">Latvian</option>
                 <option value="Other">Other</option>
             </select>
-        </div>
-
-        <div>
-            <label for="author">Author:</label>
-            <input type="text" id="author" name="author" value="" required>
         </div>
 
         <button type="submit">Create</button>

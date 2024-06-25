@@ -77,7 +77,7 @@
             </select>
         </div>
 
-        <p>Author: {{ $post->author }}</p>
+        <p>Author: {{ $post->author->name }}</p>
 
         <button type="submit">Update</button>
     </form>

@@ -12,20 +12,18 @@
         <p>Subject: <em>{{$post->subject}}</em></p>
         <p>Grade: <em>{{$post->grades}}</em></p>
         <p>Price: <em>{{$post->price}}</em>/hour</p>
-        <p>Author: {{ $post->author }}</p>
+        <p>Author: {{ $post->author->name }}</p>
         <p>Published at: {{ $post->created_at->format("d.m.Y H:i:s") }}</p>
 
         <h3>Comments:</h3>
 
+        @auth
         <button id="showCommentForm">Add Comment</button>
+        @endauth
 
         <div id="commentForm" style="display:none;">
             <form action="{{ route('comments.store', $post->id) }}" method="POST">
                 @csrf
-                <div>
-                    <label for="author">Author:</label>
-                    <input type="text" id="author" name="author" required>
-                </div>
                 <div>
                     <label for="content">Comment:</label>
                     <textarea id="content" name="content" required></textarea>
@@ -34,14 +32,24 @@
             </form>
         </div>
     </div>
-    
+
         <ul>
             @foreach($post->comments as $comment)
                 <li>
                     <p>{{ $comment->content }}</p>
-                    <p>By: {{ $comment->author }}</p>
+                    <p>By: {{ $comment->author->name }}</p>
                     <p>Posted at: {{ $comment->created_at->format("d.m.Y H:i:s") }}</p>
                 </li>
+
+                @can('update-comment', $comment)
+                <p>
+                    <form method="POST" action="{{ route('comments.destroy', $comment->id)}}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete comment</button>
+                    </form>
+                </p>
+                @endcan
             @endforeach
         </ul>
 

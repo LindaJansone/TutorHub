@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Post;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,9 +14,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        $users = [
+            ['name' => 'Valters', 'email' => 'john@gmail.com', 'password' => Hash::make('password')],
+            ['name' => 'Anna', 'email' => 'jane@gmail.com', 'password' => Hash::make('password')],
+            ['name' => 'Peteris', 'email' => 'Peteris@inbox.lv', 'password' => Hash::make('password')],
+            ['name' => 'Ieva', 'email' => 'Ieva@inbox.lv', 'password' => Hash::make('password')],
+            ['name' => 'Janis', 'email' => 'Janis@inbox.lv', 'password' => Hash::make('password')],
+            ['name' => 'Linda', 'email' => 'a@a.lv', 'password' => Hash::make('aaa')],
+            ['name' => 'Dainis', 'email' => 'javascript_hater@gmail.com', 'password' => Hash::make('password')],
+        ];
+
+        foreach ($users as $user) {
+            User::create($user);
+        }
+
+        $Peteris = User::where('name', 'Peteris')->first();
+        $Ieva = User::where('name', 'Ieva')->first();
+        $Janis = User::where('name', 'Janis')->first();
+        $Valters = User::where('name', 'Valters')->first();
+        $Anna = User::where('name', 'Anna')->first();
+        $Dainis = User::where('name', 'Dainis')->first();
+
         Post::create([
             'title' => 'Private Math Lessons',
-                'author' => 'Alice Johnson',
+                'author_id' =>  $Ieva->id,
                 'subject' => 'Mathematics',
                 'grades' => '6-8',
                 'price' => 20,
@@ -24,7 +48,7 @@ class DatabaseSeeder extends Seeder
 
         Post::create([
             'title' => 'Privātstundas vēsturē',
-                'author' => 'Janis Ozols',
+                'author_id' =>  $Peteris->id,
                 'subject' => 'History',
                 'grades' => '9-12',
                 'price' => '25',
@@ -34,7 +58,7 @@ class DatabaseSeeder extends Seeder
 
         Post::create([
             'title' => 'Literatūras privātstundas',
-                'author' => 'Anna Liepa',
+                'author_id' =>  $Janis->id,
                 'subject' => 'Literature',
                 'grades' => '7-9',
                 'price' => 15,
@@ -45,7 +69,7 @@ class DatabaseSeeder extends Seeder
 
         Post::create([
             'title' => 'Chemistry Tutoring',
-                'author' => 'Bob Smith',
+                'author_id' => $Valters->id,
                 'subject' => 'Science',
                 'grades' => '10-12',
                 'price' => 30,
@@ -55,7 +79,7 @@ class DatabaseSeeder extends Seeder
 
         Post::create([
             'title' => 'Physics Tutoring',
-                'author' => 'Charlie Brown',
+                'author_id' => $Anna->id,
                 'subject' => 'Science',
                 'grades' => '9-12',
                 'price' => 28,
@@ -65,7 +89,7 @@ class DatabaseSeeder extends Seeder
 
         Post::create([
             'title' => 'Bioloģijas privātstundas',
-            'author' => 'Ilze Balode',
+            'author_id' => $Dainis->id,
             'subject' => 'Biology',
             'grades' => '8-10',
             'price' => 22,
