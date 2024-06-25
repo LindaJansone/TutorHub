@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AuditLogEvent;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -45,6 +46,7 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->delete();
+        event(new AuditLogEvent(auth()->user(), 'deleted', $post));
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully!');
     }
 
@@ -73,6 +75,8 @@ class PostController extends Controller
 
         $post = Post::findOrFail($id);
 
+        $oldValues = $post->getOriginal();
+
         $post->title = $request->title;
         $post->body = $request->body;
         $post->subject = $request->subject;
@@ -80,6 +84,8 @@ class PostController extends Controller
         $post->price = $request->price;
         $post->language = $request->language;
         $post->save();
+
+        event(new AuditLogEvent(auth()->user(), 'updated', $post, $oldValues, $post->getChanges()));
 
         return redirect()->route('posts.show', $id)->with('success', 'Post updated successfully!');
     }
@@ -111,6 +117,8 @@ class PostController extends Controller
         $post->language = $request->language;
         $post->author_id = $user->id;
         $post->save();
+
+        event(new AuditLogEvent($user, 'created', $post));
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
