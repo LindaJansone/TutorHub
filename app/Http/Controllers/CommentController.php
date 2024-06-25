@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Events\AuditLogEvent;
 use App\Models\Comment;
 
 class CommentController extends Controller
@@ -21,6 +22,8 @@ class CommentController extends Controller
         $comment->post_id = $post->id;
         $comment->save();
 
+        event(new AuditLogEvent(auth()->user(), 'created', $comment, null, $comment->toArray()));
+
         return redirect()->route('posts.show', $post->id);
     }
 
@@ -28,33 +31,9 @@ class CommentController extends Controller
     {
         $postId = $comment->post_id;
         $comment->delete();
+
+        event(new AuditLogEvent(auth()->user(), 'deleted', $comment));
         return redirect()->route('posts.show', $postId)->with('success', 'Comment deleted successfully!');
     }
-
-    public function index(Request $request)
-    {
-        $query = Post::query();
-
-        if ($request->filled('subject')) {
-            $query->where('subject', $request->subject);
-        }
-
-        if ($request->filled('grades')) {
-            $query->where('grades', $request->grades);
-        }
-
-        if ($request->filled('price_min')) {
-            $query->where('price', '>=', $request->price_min);
-        }
-
-        if ($request->filled('price_max')) {
-            $query->where('price', '<=', $request->price_max);
-        }
-
-        $posts = $query->orderBy('created_at', 'desc')->get();
-
-        return view('posts.index', compact('posts'));
-    }
-
 
 }
