@@ -26,39 +26,39 @@
             <label for="subject">Subject:</label>
             <select id="subject" name="subject" required>
                 <option value="">Select subject</option>
-                <option value="English">English</option>
-                <option value="Latvian">Latvian</option>
-                <option value="Literature">Literature</option>
-                <option value="German">German</option>
-                <option value="French">French</option>
-                <option value="Russian">Russian</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Science">Science</option>
-                <option value="History">History</option>
-                <option value="Geography">Geography</option>
-                <option value="Biology">Biology</option>
-                <option value="Chemistry">Chemistry</option>
-                <option value="Physics">Physics</option>
-                <option value="Computer Science">Computer Science</option>
-                <option value="Art">Art</option>
-                <option value="Music">Music</option>
-                <option value="Economics">Economics</option>
-                <option value="Other">Other</option>
+                <option value="English" {{ $post->subject == 'English' ? 'selected' : '' }}>English</option>
+                <option value="Latvian" {{ $post->subject == 'Latvian' ? 'selected' : '' }}>Latvian</option>
+                <option value="Literature" {{ $post->subject == 'Literature' ? 'selected' : '' }}>Literature</option>
+                <option value="German" {{ $post->subject == 'German' ? 'selected' : '' }}>German</option>
+                <option value="French" {{ $post->subject == 'French' ? 'selected' : '' }}>French</option>
+                <option value="Russian" {{ $post->subject == 'Russian' ? 'selected' : '' }}>Russian</option>
+                <option value="Mathematics" {{ $post->subject == 'Mathematics' ? 'selected' : '' }}>Mathematics</option>
+                <option value="Science" {{ $post->subject == 'Science' ? 'selected' : '' }}>Science</option>
+                <option value="History" {{ $post->subject == 'History' ? 'selected' : '' }}>History</option>
+                <option value="Geography" {{ $post->subject == 'Geography' ? 'selected' : '' }}>Geography</option>
+                <option value="Biology" {{ $post->subject == 'Biology' ? 'selected' : '' }}>Biology</option>
+                <option value="Chemistry" {{ $post->subject == 'Chemistry' ? 'selected' : '' }}>Chemistry</option>
+                <option value="Physics" {{ $post->subject == 'Physics' ? 'selected' : '' }}>Physics</option>
+                <option value="Computer Science" {{ $post->subject == 'Computer Science' ? 'selected' : '' }}>Computer Science</option>
+                <option value="Art" {{ $post->subject == 'Art' ? 'selected' : '' }}>Art</option>
+                <option value="Music" {{ $post->subject == 'Music' ? 'selected' : '' }}>Music</option>
+                <option value="Economics" {{ $post->subject == 'Economics' ? 'selected' : '' }}>Economics</option>
+                <option value="Other" {{ $post->subject == 'Other' ? 'selected' : '' }}>Other</option>
             </select>
         </div>
 
         <div>
             <label for="grades">Grades:</label>
-            <select id="language" name="language" required>
+            <select id="grades" name="grades" required>
                 <option value="">Select grade range</option>
-                <option value="1-12">1-12</option>
-                <option value="1-3">1-3</option>
-                <option value="1-6">1-6</option>
-                <option value="4-6">4-6</option>
-                <option value="7-9">7-9</option>
-                <option value="7-12">7-12</option>
-                <option value="10-12">10-12</option>
-                <option value="Other">Other</option>
+                <option value="1-12" {{ $post->grades == '1-12' ? 'selected' : '' }}>1-12</option>
+                <option value="1-3" {{ $post->grades == '1-3' ? 'selected' : '' }}>1-3</option>
+                <option value="1-6" {{ $post->grades == '1-6' ? 'selected' : '' }}>1-6</option>
+                <option value="4-6" {{ $post->grades == '4-6' ? 'selected' : '' }}>4-6</option>
+                <option value="7-9" {{ $post->grades == '7-9' ? 'selected' : '' }}>7-9</option>
+                <option value="7-12" {{ $post->grades == '7-12' ? 'selected' : '' }}>7-12</option>
+                <option value="10-12" {{ $post->grades == '10-12' ? 'selected' : '' }}>10-12</option>
+                <option value="Other" {{ $post->grades == 'Other' ? 'selected' : '' }}>Other</option>
             </select>
         </div>
 
@@ -67,12 +67,15 @@
             <input type="text" id="price" name="price" value="{{ $post->price }}" required>
         </div>
 
-        <select id="language" name="language" required>
+        <div>
+            <label for="language">Language:</label>
+            <select id="language" name="language" required>
                 <option value="">Select Language</option>
-                <option value="ENG">English</option>
-                <option value="LV">Latvian</option>
-                <option value="Other">Other</option>
-        </select>
+                <option value="ENG" {{ $post->language == 'ENG' ? 'selected' : '' }}>English</option>
+                <option value="LV" {{ $post->language == 'LV' ? 'selected' : '' }}>Latvian</option>
+                <option value="Other" {{ $post->language == 'Other' ? 'selected' : '' }}>Other</option>
+            </select>
+        </div>
 
         <p>Author: {{ $post->author }}</p>
 

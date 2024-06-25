@@ -14,7 +14,27 @@
         <p>Price: <em>{{$post->price}}</em>/hour</p>
         <p>Author: {{ $post->author }}</p>
         <p>Published at: {{ $post->created_at->format("d.m.Y H:i:s") }}</p>
+
         <h3>Comments:</h3>
+
+        <button id="showCommentForm">Add Comment</button>
+
+        <div id="commentForm" style="display:none;">
+            <form action="{{ route('comments.store', $post->id) }}" method="POST">
+                @csrf
+                <div>
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author" required>
+                </div>
+                <div>
+                    <label for="content">Comment:</label>
+                    <textarea id="content" name="content" required></textarea>
+                </div>
+                <button type="submit">Submit Comment</button>
+            </form>
+        </div>
+    </div>
+    
         <ul>
             @foreach($post->comments as $comment)
                 <li>
@@ -24,6 +44,12 @@
                 </li>
             @endforeach
         </ul>
-    </div>
+
+
+    <script>
+        document.getElementById('showCommentForm').addEventListener('click', function() {
+            document.getElementById('commentForm').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
