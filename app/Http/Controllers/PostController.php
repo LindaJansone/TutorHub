@@ -7,9 +7,37 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all()->sortByDesc('created_at');
+        $subject = $request->input('subject');
+        $grades = $request->input('grades');
+        $price_min = $request->input('price_min');
+        $price_max = $request->input('price_max');
+
+        $query = Post::query();
+
+        if ($subject) {
+            $query->where('subject', $subject);
+        }
+
+        if ($grades) {
+            $query->where('grades', $grades);
+        }
+
+        if ($price_min !== null) {
+            $query->where('price', '>=', $price_min);
+        }
+
+        if ($price_max !== null) {
+            $query->where('price', '<=', $price_max);
+        }
+
+        $posts = $query->orderBy('created_at', 'desc')->get();
+
+        if ($request->ajax()) {
+            return view('posts.partials.posts', compact('posts'))->render();
+        }
+
         return view('posts.index', compact('posts'));
     }
 
@@ -26,9 +54,6 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    /**
-     * Show the form for editing the post
-     */
     public function edit(string $id)
     {
         $post = Post::find($id);
@@ -75,10 +100,8 @@ class PostController extends Controller
             'language' => 'required|string|max:255',
         ]);
 
-        // Get the currently authenticated user
         $user = auth()->user();
 
-        // Create the post and associate it with the current user
         $post = new Post();
         $post->title = $request->title;
         $post->body = $request->body;
@@ -86,10 +109,9 @@ class PostController extends Controller
         $post->grades = $request->grades;
         $post->price = $request->price;
         $post->language = $request->language;
-        $post->author_id = $user->id; // Associate the post with the current user's ID
+        $post->author_id = $user->id;
         $post->save();
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
-
 }

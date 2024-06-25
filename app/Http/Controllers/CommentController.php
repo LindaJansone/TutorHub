@@ -30,4 +30,31 @@ class CommentController extends Controller
         $comment->delete();
         return redirect()->route('posts.show', $postId)->with('success', 'Comment deleted successfully!');
     }
+
+    public function index(Request $request)
+    {
+        $query = Post::query();
+
+        if ($request->filled('subject')) {
+            $query->where('subject', $request->subject);
+        }
+
+        if ($request->filled('grades')) {
+            $query->where('grades', $request->grades);
+        }
+
+        if ($request->filled('price_min')) {
+            $query->where('price', '>=', $request->price_min);
+        }
+
+        if ($request->filled('price_max')) {
+            $query->where('price', '<=', $request->price_max);
+        }
+
+        $posts = $query->orderBy('created_at', 'desc')->get();
+
+        return view('posts.index', compact('posts'));
+    }
+
+
 }
