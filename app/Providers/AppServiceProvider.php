@@ -27,8 +27,12 @@ class AppServiceProvider extends ServiceProvider
             return $user->id === $post->author_id;
         });
 
+        Gate::define('delete-post', function (User $user, Post $post){
+            return $user->id === $post->author_id || $user->role === 'admin';
+        });
+
         Gate::define('update-comment', function (User $user, Comment $comment){
-            return $user->id === $comment->author_id;
+            return $user->id === $comment->author_id || $user->role === 'admin';
         });
     }
 }

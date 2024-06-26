@@ -76,7 +76,7 @@
                 <p>Grade: <em>{{ $post->grades }}</em></p>
                 <p>Price: <em>{{ $post->price }}</em>/hour</p>
 
-                @can('update-post', $post)
+                @can('delete-post', $post)
                 <p>
                     <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
                         @csrf
@@ -84,7 +84,8 @@
                         <button type="submit">Delete post</button>
                     </form>
                 </p>
-
+                @endcan
+                @can('update-post', $post)
                 <p>
                     <form method="GET" action="{{ route('posts.edit', $post->id) }}">
                         <button type="submit">Edit post</button>

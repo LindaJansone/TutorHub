@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Ieva', 'email' => 'Ieva@inbox.lv', 'password' => Hash::make('password')],
             ['name' => 'Janis', 'email' => 'Janis@inbox.lv', 'password' => Hash::make('password')],
             ['name' => 'Linda', 'email' => 'a@a.lv', 'password' => Hash::make('aaa')],
+            ['name' => 'admin', 'email' => 'admin@tutorhub.lv', 'password' => Hash::make('admin'), 'role' => 'admin',],
             ['name' => 'Dainis', 'email' => 'javascript_hater@gmail.com', 'password' => Hash::make('password')],
         ];
 
