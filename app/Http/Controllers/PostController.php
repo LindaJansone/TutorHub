@@ -15,6 +15,7 @@ class PostController extends Controller
         $grades = $request->input('grades');
         $price_min = $request->input('price_min');
         $price_max = $request->input('price_max');
+        $language = $request->input('language');
 
         $query = Post::query();
 
@@ -32,6 +33,10 @@ class PostController extends Controller
 
         if ($price_max !== null) {
             $query->where('price', '<=', $price_max);
+        }
+
+        if ($language) {
+            $query->where('language', $language);
         }
 
         $posts = $query->orderBy('created_at', 'desc')->get();

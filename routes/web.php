@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\URL;
 Route::redirect('/', '/posts');
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create'); // Moved up
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');

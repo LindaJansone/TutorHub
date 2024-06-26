@@ -6,8 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <a href="locale/en">ENG</a>
-    <a href="locale/lv">LV</a>
+    <a href="{{ url('locale/en') }}">ENG</a>
+    <a href="{{ url('locale/lv') }}">LV</a>
 
     <h1>@lang('msg.welcome')</h1>
 
@@ -33,7 +33,7 @@
                 <option value="Biology">@lang('msg.biology')</option>
                 <option value="Chemistry">@lang('msg.chemistry')</option>
                 <option value="Physics">@lang('msg.physics')</option>
-                <option value="Computer Science">@lang('msg.computer_science')</option>
+                <option value="Computer Science">@lang('msg.computer science')</option>
                 <option value="Art">@lang('msg.art')</option>
                 <option value="Music">@lang('msg.music')</option>
                 <option value="Economics">@lang('msg.economics')</option>
@@ -67,6 +67,32 @@
         </div>
 
         <div>
+            <label for="grades">@lang('msg.grades'):</label>
+            <select id="grades" name="grades">
+                <option value="">@lang('msg.all')</option>
+                <option value="1-12">1-12</option>
+                <option value="1-3">1-3</option>
+                <option value="1-6">1-6</option>
+                <option value="4-6">4-6</option>
+                <option value="7-9">7-9</option>
+                <option value="7-12">7-12</option>
+                <option value="10-12">10-12</option>
+                <option value="Other">@lang('msg.other')</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="language">@lang('msg.language'):</label>
+            <select id="language" name="language" required>
+                <option value="">@lang('msg.all')</option>
+                <option value="ENG">ENG</option>
+                <option value="LV">LV</option>
+                <option value="RU">RU</option>
+                <option value="Other">@lang('msg.other')</option>
+            </select>
+        </div>
+
+        <div>
             <button type="submit">@lang('msg.apply_filters')</button>
         </div>
     </form>
@@ -77,8 +103,9 @@
                 <h2><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></h2>
                 <p>@lang('msg.offer_by') <em>{{ $post->author->name }}</em> @lang('msg.published_on') {{ $post->created_at->format('d.m.y') }}</p>
                 <p>@lang('msg.subject'): <em>@lang('msg.' . strtolower($post->subject))</em></p>
-                <p>@lang('msg.grade'): <em>{{ $post->grades }}</em></p>
+                <p>@lang('msg.grade'): @if($post->grades === 'Other') @lang('msg.other') @else{{ $post->grades }} @endif
                 <p>@lang('msg.price'): <em>{{ $post->price }}</em>@lang('msg.hour')</p>
+                <p>@lang('msg.language'): <em>@if($post->language === 'Other') @lang('msg.other') @else{{ $post->language }} @endif</em></p>
 
                 @can('delete-post', $post)
                 <p>

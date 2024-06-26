@@ -6,8 +6,8 @@
     <title>Create Post</title>
 </head>
 <body>
-    <a href="locale/en">ENG</a>
-    <a href="locale/lv">LV</a>
+    <a href="{{ url('locale/en') }}">ENG</a>
+    <a href="{{ url('locale/lv') }}">LV</a>
 
     <h1>@lang('msg.create')</h1>
 
@@ -15,12 +15,12 @@
         @csrf
 
         <div>
-            <label for="title">Title:</label>
+            <label for="title">@lang('msg.title'):</label>
             <input type="text" id="title" name="title" value="" required>
         </div>
 
         <div>
-            <label for="body">Body:</label>
+            <label for="body">@lang('msg.body'):</label>
             <textarea id="body" name="body" required cols="80" rows="20"></textarea>
         </div>
 
@@ -41,7 +41,7 @@
                     <option value="Biology">@lang('msg.biology')</option>
                     <option value="Chemistry">@lang('msg.chemistry')</option>
                     <option value="Physics">@lang('msg.physics')</option>
-                    <option value="Computer Science">@lang('msg.computer_science')</option>
+                    <option value="Computer Science">@lang('msg.computer science')</option>
                     <option value="Art">@lang('msg.art')</option>
                     <option value="Music">@lang('msg.music')</option>
                     <option value="Economics">@lang('msg.economics')</option>
@@ -70,16 +70,17 @@
         </div>
 
         <div>
-            <label for="language">Language:</label>
+            <label for="language">@lang('msg.language'):</label>
             <select id="language" name="language" required>
-                <option value="">Select Language</option>
-                <option value="ENG">English</option>
-                <option value="LV">Latvian</option>
-                <option value="Other">Other</option>
+                <option value="">@lang('msg.choose_lan')</option>
+                <option value="ENG">ENG</option>
+                <option value="LV">LV</option>
+                <option value="RU">RU</option>
+                <option value="Other">@lang('msg.other')</option>
             </select>
         </div>
 
-        <button type="submit">Create</button>
+        <button type="submit">@lang('msg.sub_create')</button>
     </form>
 </body>
 </html>
