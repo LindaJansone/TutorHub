@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LocaleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
@@ -23,6 +24,8 @@ Route::middleware('auth')->group(function () {
 });
 
 URL::forceScheme('https');
+
+Route::get('locale/{lang}',[LocaleController::class, 'setLocale']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -10,6 +10,7 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
+
         $subject = $request->input('subject');
         $grades = $request->input('grades');
         $price_min = $request->input('price_min');

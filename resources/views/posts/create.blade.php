@@ -6,7 +6,10 @@
     <title>Create Post</title>
 </head>
 <body>
-    <h1>Create Post</h1>
+    <a href="locale/en">ENG</a>
+    <a href="locale/lv">LV</a>
+
+    <h1>@lang('msg.create')</h1>
 
     <form action="{{ route('posts.store') }}" method="POST">
         @csrf
@@ -22,34 +25,34 @@
         </div>
 
         <div>
-            <label for="subject">Subject:</label>
-            <select id="subject" name="subject" required>
-                <option value="">Select subject</option>
-                <option value="English">English</option>
-                <option value="Latvian">Latvian</option>
-                <option value="Literature">Literature</option>
-                <option value="German">German</option>
-                <option value="French">French</option>
-                <option value="Russian">Russian</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Science">Science</option>
-                <option value="History">History</option>
-                <option value="Geography">Geography</option>
-                <option value="Biology">Biology</option>
-                <option value="Chemistry">Chemistry</option>
-                <option value="Physics">Physics</option>
-                <option value="Computer Science">Computer Science</option>
-                <option value="Art">Art</option>
-                <option value="Music">Music</option>
-                <option value="Economics">Economics</option>
-                <option value="Other">Other</option>
-            </select>
+            <label for="subject">@lang('msg.subject'):</label>
+                <select id="subject" name="subject">
+                    <option value="">@lang('msg.all')</option>
+                    <option value="English">@lang('msg.english')</option>
+                    <option value="Latvian">@lang('msg.latvian')</option>
+                    <option value="Literature">@lang('msg.literature')</option>
+                    <option value="German">@lang('msg.german')</option>
+                    <option value="French">@lang('msg.french')</option>
+                    <option value="Russian">@lang('msg.russian')</option>
+                    <option value="Mathematics">@lang('msg.mathematics')</option>
+                    <option value="Science">@lang('msg.science')</option>
+                    <option value="History">@lang('msg.history')</option>
+                    <option value="Geography">@lang('msg.geography')</option>
+                    <option value="Biology">@lang('msg.biology')</option>
+                    <option value="Chemistry">@lang('msg.chemistry')</option>
+                    <option value="Physics">@lang('msg.physics')</option>
+                    <option value="Computer Science">@lang('msg.computer_science')</option>
+                    <option value="Art">@lang('msg.art')</option>
+                    <option value="Music">@lang('msg.music')</option>
+                    <option value="Economics">@lang('msg.economics')</option>
+                    <option value="Other">@lang('msg.other')</option>
+                </select>
         </div>  
 
         <div>
-            <label for="grades">Grades:</label>
-            <select id="grades" name="grades" required>
-                <option value="">Select grade range</option>
+            <label for="grades">@lang('msg.grades'):</label>
+            <select id="grades" name="grades">
+                <option value="">@lang('msg.all')</option>
                 <option value="1-12">1-12</option>
                 <option value="1-3">1-3</option>
                 <option value="1-6">1-6</option>
@@ -57,12 +60,12 @@
                 <option value="7-9">7-9</option>
                 <option value="7-12">7-12</option>
                 <option value="10-12">10-12</option>
-                <option value="Other">Other</option>
+                <option value="Other">@lang('msg.other')</option>
             </select>
         </div>
 
         <div>
-            <label for="price">Price:</label>
+            <label for="price">@lang('msg.price'):</label>
             <input type="text" id="price" name="price" value="" required>
         </div>
 
