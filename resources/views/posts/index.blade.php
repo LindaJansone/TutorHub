@@ -9,6 +9,16 @@
     <a href="{{ url('locale/en') }}">ENG</a>
     <a href="{{ url('locale/lv') }}">LV</a>
 
+    
+    @guest
+    <a href="{{ route('login') }}">@lang('msg.login')</a>
+    <a href="{{ route('register') }}">@lang('msg.register')</a>
+    @endguest
+
+    @auth
+    <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> @lang('msg.logout')</a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
+    @endauth
     <h1>@lang('msg.welcome')</h1>
 
     @auth

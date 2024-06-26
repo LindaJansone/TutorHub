@@ -9,6 +9,13 @@
     <a href="{{ url('locale/en') }}">ENG</a>
     <a href="{{ url('locale/lv') }}">LV</a>
 
+    @auth
+    <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> @lang('msg.logout')</a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
+    @endauth
+
+    <a href="/posts">@lang('msg.back')</a>
+
     <h1>@lang('msg.create')</h1>
 
     <form action="{{ route('posts.store') }}" method="POST">

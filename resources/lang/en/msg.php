@@ -46,5 +46,9 @@ return [
     'del_comment' => 'Delete comment',
     'pub_comment' => 'Comment by',
     'choose_lan' => 'Choose language',
+    'login' => 'Login',
+    'register'=> 'Register',
+    'logout' => 'Log out',
+    'back' => 'Back',
 
 ];

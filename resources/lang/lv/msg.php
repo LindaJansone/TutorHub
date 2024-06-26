@@ -46,4 +46,8 @@ return [
     'del_comment' => 'Dzēst komentāru',
     'pub_comment' => 'Komentāru publicēja',
     'choose_lan' => 'Izvēlieties valodu',
+    'login' => 'Pieslēgties',
+    'register'=> 'Reģistrēties',
+    'logout' => 'Iziet',
+    'back' => 'Atpakaļ',
 ];
