@@ -77,23 +77,8 @@
         </div>
 
         <div>
-            <label for="grades">@lang('msg.grades'):</label>
-            <select id="grades" name="grades">
-                <option value="">@lang('msg.all')</option>
-                <option value="1-12">1-12</option>
-                <option value="1-3">1-3</option>
-                <option value="1-6">1-6</option>
-                <option value="4-6">4-6</option>
-                <option value="7-9">7-9</option>
-                <option value="7-12">7-12</option>
-                <option value="10-12">10-12</option>
-                <option value="Other">@lang('msg.other')</option>
-            </select>
-        </div>
-
-        <div>
             <label for="language">@lang('msg.language'):</label>
-            <select id="language" name="language" required>
+            <select id="language" name="language">
                 <option value="">@lang('msg.all')</option>
                 <option value="ENG">ENG</option>
                 <option value="LV">LV</option>
