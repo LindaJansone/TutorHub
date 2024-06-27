@@ -114,7 +114,6 @@
             </div>
         </form>
         <div id="top"></div>
-        
         <div id="postsContainer">
             @foreach ($posts as $post)
                 <div class="post">
@@ -148,6 +147,7 @@
             @endforeach
         </div>
     </div>
+</div>
 
     <script>
         $(document).ready(function() {
@@ -162,15 +162,6 @@
                         $('#postsContainer').html(response);
                     }
                 });
-            });
-        });
-    </script>
-    <script>
-        document.getElementById('scrollToTop').addEventListener('click', function(event) {
-            event.preventDefault();
-            document.getElementById('postsContainer').scrollTo({
-                top: 0,
-                behavior: 'smooth'
             });
         });
     </script>
