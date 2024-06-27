@@ -1,0 +1,160 @@
+html, body {
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   height: 100%;
+   overflow: hidden; /* Prevent scrolling on the body */
+   background-color: #f5efff;
+}
+
+nav {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #a594f9;
+   width: 100%;
+   padding: 10px 20px; 
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 1000;
+}
+
+nav a {
+   color: #f5efff;
+   text-decoration: none;
+   font-weight: bold;
+   padding-left: 5px;
+   padding-right: 5px;
+   font-size: 25px;
+   transition: background-color 0.3s ease; 
+}
+
+nav a:hover {
+   background-color: #cd91ff;
+   border-radius: 5px;
+}
+
+.nav-left, .nav-right {
+   display: flex;
+}
+
+.nav-right {
+   margin-left: auto;
+   margin-right: 20px;
+}
+
+.nav-right a {
+   margin-left: 10px; 
+}
+
+body {
+   padding-top: 60px; 
+}
+
+h1 {
+   color: #7371fc;
+}
+
+.container {
+   display: flex;
+   flex-direction: row;
+   height: 100%;
+   overflow: hidden; /* Ensure container does not scroll */
+}
+
+#filterForm {
+   position: fixed;
+   top: 60px; 
+   left: 0;
+   width: 300px;
+   padding: 20px;
+   background-color: #ffffff;
+   border-right: 1px solid #ccc;
+   height: calc(100vh - 60px);
+   overflow-y: auto;
+   margin-top: 75px;
+}
+#postsContainer {
+   margin-top: 80px;
+   margin-left: 320px; 
+   padding: 20px;
+   padding-left: 50px;
+   flex: 1;
+   height: calc(100vh - 165px); 
+   overflow-y: auto;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;
+   align-content: flex-start;
+}
+
+.post {
+   flex: 0 1 calc(50% - 20px);
+   box-sizing: border-box;
+   margin-bottom: 20px;
+   padding: 15px;
+   border: 1px solid #ccc;
+   background-color: #ffffff;
+   border-radius: 5px;
+   height: 400px;
+   overflow: hidden;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between; 
+}
+
+.post h2, .post p, .post form {
+   margin-bottom: 5px; 
+}
+
+.post a {
+   text-decoration: none;
+   color: #7371fc;
+}
+
+.post p, h2{
+   margin-bottom: 5px; 
+   color: #430f8c;
+}
+
+.post form {
+   margin-bottom: 5px;
+}
+
+.post form button {
+   margin: 0;
+}
+
+b{
+    color: #a594f9;
+}
+.create-post-container {
+   position: fixed;
+   top: 35px;
+   right: 20px; 
+}
+.welcome-container{
+   position: fixed;
+   top: 35px; 
+   left: 20px; 
+}
+
+h1, h2, h3, a, p, option{
+   color: #430f8c;
+}
+
+button {
+   background-color: #a594f9;
+   color: #f5efff;
+   border: none;
+   border-radius: 25px; 
+   padding: 10px 20px; 
+   font-size: 16px;
+   cursor: pointer;
+   transition: background-color 0.3s ease; 
+}
+
+button:hover {
+   background-color: #cd91ff; /* Change color on hover */
+}

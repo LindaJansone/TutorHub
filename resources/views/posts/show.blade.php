@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite('resources/css/design.css')
 
-    <a href="{{ url('locale/en') }}">ENG</a>
-    <a href="{{ url('locale/lv') }}">LV</a>
+    <nav>
+        <div class="nav-left">
+            <a href="/posts">@lang('msg.back')</a>
+            <a href="{{ url('locale/en') }}">ENG</a>
+            <a href="{{ url('locale/lv') }}">LV</a>
+        </div>
 
-    @guest
-    <a href="{{ route('login') }}">@lang('msg.login')</a>
-    <a href="{{ route('register') }}">@lang('msg.register')</a>
-    @endguest
+        <div class="nav-right">
+            @guest
+                <a href="{{ route('login') }}">@lang('msg.login')</a>
+                <a href="{{ route('register') }}">@lang('msg.register')</a>
+            @endguest
 
-    @auth
-    <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> @lang('msg.logout')</a>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
-    @endauth
-
-    <a href="/posts">@lang('msg.back')</a>
+            @auth
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">@lang('msg.logout')</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+            @endauth
+        </div>
+    </nav>
 
     <title>{{$post->title}}</title>
 </head>

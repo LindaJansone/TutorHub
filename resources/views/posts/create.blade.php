@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite('resources/css/design.css')
     <title>Create Post</title>
 </head>
 <body>
-    <a href="{{ url('locale/en') }}">ENG</a>
-    <a href="{{ url('locale/lv') }}">LV</a>
+    <nav>
+        <div class="nav-left">
+            <a href="/posts">@lang('msg.back')</a>
+            <a href="{{ url('locale/en') }}">ENG</a>
+            <a href="{{ url('locale/lv') }}">LV</a>
+        </div>
 
-    @auth
-    <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> @lang('msg.logout')</a>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
-    @endauth
-
-    <a href="/posts">@lang('msg.back')</a>
+        <div class="nav-right">
+            @auth
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">@lang('msg.logout')</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+            @endauth
+        </div>
+    </nav>
 
     <h1>@lang('msg.create')</h1>
 
