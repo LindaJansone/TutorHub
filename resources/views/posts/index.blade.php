@@ -27,9 +27,16 @@
         </div>
     </nav>
     
+    @guest
+        <div class="welcome-container">
+            <h1>@lang('msg.welcome')!</h1>   
+        </div>
+    @endguest
+    @auth
     <div class="welcome-container">
-        <h1>@lang('msg.welcome')</h1>   
+        <h1>@lang('msg.welcome'), {{ Auth::user()->name }}!</h1>   
     </div>
+    @endauth
 
     <div class="create-post-container">
     @auth

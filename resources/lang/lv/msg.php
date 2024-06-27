@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'welcome' => 'Laipni lūdzam TutorHub!',
+    'welcome' => 'Laipni lūdzam TutorHub',
     'create' => 'Izveidot jaunu ierakstu',
     'subject' => 'Priekšmets',
     'grades' => 'Klases',

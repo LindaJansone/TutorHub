@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'welcome' => 'Welcome to TutorHub!',
+    'welcome' => 'Welcome to TutorHub',
     'create' => 'Create new post',
     'subject' => 'Subject',
     'grades' => 'Grades',

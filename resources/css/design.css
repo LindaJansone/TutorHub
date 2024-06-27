@@ -1,3 +1,4 @@
+
 html, body {
    margin: 0;
    padding: 0;
@@ -5,6 +6,7 @@ html, body {
    height: 100%;
    overflow: hidden; /* Prevent scrolling on the body */
    background-color: #f5efff;
+   font-size:20px;
 }
 
 nav {
@@ -101,7 +103,6 @@ h1 {
    overflow: hidden;
    display: flex;
    flex-direction: column;
-   justify-content: space-between; 
 }
 
 .post h2, .post p, .post form {
@@ -157,4 +158,11 @@ button {
 
 button:hover {
    background-color: #cd91ff; /* Change color on hover */
+}
+
+.button-container {
+   padding-top:20px;
+   display: flex;
+   gap: 10px; /* Add space between the buttons */
+   align-items: center; /* Align the buttons vertically */
 }
